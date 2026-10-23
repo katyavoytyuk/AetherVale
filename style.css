@@ -115,65 +115,153 @@ h1 em, h2 em, .fg-inline-italic { color: #b4e441; font-style: italic; }
 .pass-card button { width: 100%; padding: 13px; background: transparent; border: 1px solid #4a554b; color: #fff; text-transform: uppercase; font-size: 9px; letter-spacing: 1.2px; font-weight: 800; }
 .featured button { background: #b4e441; border-color: #b4e441; color: #121712; box-shadow: 4px 4px 0 #5b7327; }
 
-.map-section { background: #e9e5da; color: #171d18; display: grid; grid-template-columns: 40% 60%; gap: 5vw; align-items: center; overflow: hidden; }
-.map-copy > p { color: #6b726a; font-size: 13px; line-height: 1.8; max-width: 430px; margin: 24px 0 27px; }
-.map-stats { display: flex; gap: 45px; padding: 22px 0; border-top: 1px solid #c8cbc2; border-bottom: 1px solid #c8cbc2; margin-bottom: 28px; }
-.map-stats strong { display: block; font: 19px "Russo One"; }
-.map-stats span { color: #81867e; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; }
-.outline-button { display: flex; gap: 25px; align-items: center; background: #182019; color: white; border: 0; padding: 14px 18px; text-transform: uppercase; font-size: 9px; font-weight: 800; letter-spacing: 1px; }
-.world-map { height: 480px; position: relative; background: #397f91; border: 8px solid #5d4934; outline: 3px solid #2e241a; transform: rotate(1deg); box-shadow: inset 5px 5px #826a4e,inset -5px -5px #3b2c20,13px 14px 0 #c9c5ba; overflow: hidden; image-rendering: pixelated; }
-.world-map:before,.world-map:after { content: ""; position: absolute; z-index: 8; width: 14px; height: 14px; background: #967855; box-shadow: inset -4px -4px #3d2e20; }
-.world-map:before { left: 0; top: 0; }.world-map:after { right: 0; bottom: 0; }
-.map-water { position: absolute; inset: 0; background-color: #397f91; background-image: linear-gradient(45deg,#ffffff0b 25%,transparent 25%,transparent 75%,#ffffff0b 75%),linear-gradient(45deg,#245f7517 25%,transparent 25%,transparent 75%,#245f7517 75%); background-position: 0 0,8px 8px; background-size: 16px 16px; }
-.map-grid { position: absolute; z-index: 1; inset: 0; background-image: linear-gradient(#dbe5dc0c 1px,transparent 1px),linear-gradient(90deg,#dbe5dc0c 1px,transparent 1px); background-size: 16px 16px; }
-.map-compass { position: absolute; z-index: 7; left: 14px; top: 13px; width: 44px; height: 44px; border: 3px solid #d1c09b; border-radius: 0; color: #f2e6c9; font: 7px "Russo One"; text-align: center; padding-top: 3px; background: #28372ed9; box-shadow: 3px 3px #172019; }
-.map-compass i { position: absolute; width: 8px; height: 23px; left: 15px; top: 10px; background: linear-gradient(#b4e441 0 50%,#80918a 50%); clip-path: polygon(50% 0,100% 50%,50% 100%,0 50%); transform: rotate(-12deg); }
-.land { position: absolute; z-index: 2; background-color: #739b45; background-image: linear-gradient(45deg,#8bb257 25%,transparent 25%,transparent 75%,#8bb257 75%),linear-gradient(45deg,#5f8638 25%,transparent 25%,transparent 75%,#5f8638 75%); background-position: 0 0,8px 8px; background-size: 16px 16px; filter: drop-shadow(8px 8px 0 #24566a); }
-.land:after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg,#c9af68 0 8px,#b99b5b 8px 16px); clip-path: inherit; transform: translate(0,6px); z-index: -1; }
-.land-one { width: 65%; height: 75%; left: 8%; top: 8%; clip-path: polygon(8% 0,56% 0,56% 5%,72% 5%,72% 13%,88% 13%,88% 22%,100% 22%,100% 47%,94% 47%,94% 68%,82% 68%,82% 79%,68% 79%,68% 100%,49% 100%,49% 94%,31% 94%,31% 100%,14% 100%,14% 90%,5% 90%,5% 73%,0 73%,0 48%,5% 48%,5% 22%,8% 22%); }
-.land-two { width: 29%; height: 36%; right: 3%; bottom: 3%; background-color: #c8aa5b; background-image: linear-gradient(45deg,#d6bd73 25%,transparent 25%,transparent 75%,#d6bd73 75%),linear-gradient(45deg,#ad8e48 25%,transparent 25%,transparent 75%,#ad8e48 75%); clip-path: polygon(15% 0,73% 0,73% 8%,100% 8%,100% 65%,92% 65%,92% 100%,24% 100%,24% 92%,0 92%,0 29%,15% 29%); }
-.land-three { width: 24%; height: 23%; right: 1%; top: 4%; background-color: #466c4d; background-image: linear-gradient(45deg,#557e59 25%,transparent 25%,transparent 75%,#557e59 75%),linear-gradient(45deg,#36583f 25%,transparent 25%,transparent 75%,#36583f 75%); clip-path: polygon(9% 0,100% 0,100% 68%,84% 68%,84% 92%,38% 92%,38% 100%,0 100%,0 27%,9% 27%); }
-.map-scenery { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
-.map-tree { position: absolute; width: 14px; height: 18px; background: #224d2d; border: 3px solid #173820; box-shadow: 3px 3px #15301c; }
-.map-tree:after { content: ""; position: absolute; width: 4px; height: 7px; left: 2px; bottom: -8px; background: #755035; }
-.tree-one { left: 28%; top: 53%; }.tree-two { left: 33%; top: 59%; }.tree-three { left: 24%; top: 65%; }.tree-four { left: 37%; top: 49%; }
-.map-mountain { position: absolute; width: 28px; height: 25px; background: #8f9891; clip-path: polygon(50% 0,100% 100%,0 100%); filter: drop-shadow(5px 5px 0 #4c5b51); }
-.map-mountain:after { content: ""; position: absolute; width: 15px; height: 11px; left: 7px; top: 2px; background: #e1e8e3; clip-path: polygon(50% 0,100% 100%,72% 75%,50% 100%,27% 72%,0 100%); }
-.mountain-one { left: 19%; top: 20%; }.mountain-two { left: 25%; top: 17%; transform: scale(.75); }
-.map-house { position: absolute; left: 44%; top: 46%; width: 19px; height: 16px; background: #a67a4b; border: 3px solid #69472f; box-shadow: 4px 4px #36572e; }
-.map-house:before { content: ""; position: absolute; width: 23px; height: 9px; left: -5px; top: -8px; background: #774535; clip-path: polygon(50% 0,100% 100%,0 100%); }
-.map-house i { position: absolute; width: 5px; height: 8px; left: 4px; bottom: 0; background: #39291f; }
-.map-cactus { position: absolute; width: 7px; height: 22px; background: #3f753d; box-shadow: inset -2px 0 #26532d; }
-.map-cactus:before,.map-cactus:after { content: ""; position: absolute; width: 7px; height: 9px; top: 7px; border-bottom: 4px solid #3f753d; }
-.map-cactus:before { left: -5px; border-left: 4px solid #3f753d; }.map-cactus:after { right: -5px; border-right: 4px solid #3f753d; }
-.cactus-one { right: 16%; bottom: 16%; }.cactus-two { right: 8%; bottom: 24%; transform: scale(.7); }
-.map-road { position: absolute; height: 5px; background: #c6b275; transform-origin: left; z-index: 2; opacity: .8; }
-.road-one { width: 49%; left: 24%; top: 42%; transform: rotate(27deg); }
-.road-two { width: 35%; left: 31%; top: 68%; transform: rotate(-38deg); }
-.biome { position: absolute; z-index: 2; color: #f7f4e8; font-size: 7px; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; }
-.biome b { display: block; margin-top: 5px; padding: 3px 5px; background: #17221dbb; white-space: nowrap; }
-.biome i { display: inline-block; position: relative; }
-.biome-snow { left: 17%; top: 15%; }
-.biome-snow i { width: 48px; height: 33px; background: linear-gradient(135deg,transparent 35%,#dce7e2 36% 63%,transparent 64%),linear-gradient(45deg,transparent 43%,#a7bbc0 44% 68%,transparent 69%); }
-.biome-forest { left: 18%; top: 55%; }
-.biome-forest i { width: 18px; height: 28px; margin-right: -2px; background: #244d35; clip-path: polygon(50% 0,100% 62%,75% 62%,100% 100%,0 100%,25% 62%,0 62%); }
-.biome-desert { right: 8%; bottom: 12%; }
-.biome-desert i { width: 82px; height: 42px; background: #c7ad63; clip-path: polygon(0 62%,22% 28%,48% 55%,71% 0,100% 65%,100% 100%,0 100%); box-shadow: inset 0 -8px #a98e4f; }
-.biome-swamp { right: 8%; top: 9%; }
-.biome-swamp i { width: 24px; height: 31px; margin-right: 3px; background: #3a5b47; clip-path: polygon(41% 0,62% 0,62% 48%,100% 48%,100% 67%,61% 67%,61% 100%,42% 100%,42% 67%,0 67%,0 48%,41% 48%); }
-.city { position: absolute; z-index: 4; display: grid; grid-template-columns: 19px auto; column-gap: 8px; color: white; text-transform: uppercase; filter: drop-shadow(0 2px 2px #14201c); }
-.city span { grid-row: 1/3; width: 19px; height: 19px; background: #b5e441; border: 4px solid #243322; box-shadow: 0 0 0 2px #b5e441; clip-path: polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%); }
-.city b { font: 9px "Russo One"; letter-spacing: .7px; white-space: nowrap; }
-.city small { color: #c1ccc4; font-size: 6px; letter-spacing: 1px; margin-top: 2px; white-space: nowrap; }
-.city-aether { left: 39%; top: 38%; }.city-north { left: 48%; top: 18%; }.city-port { right: 8%; bottom: 32%; }
-.marker { position: absolute; z-index: 3; color: white; font-size: 9px; text-transform: uppercase; font-weight: 800; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; }
-.marker span { width: 13px; height: 13px; background: #b4e441; border: 3px solid #273626; box-shadow: 0 0 0 2px #b4e441; transform: rotate(45deg); }
-.marker-arena { left: 56%; top: 68%; }
-.map-legend { position: absolute; z-index: 5; right: 13px; top: 13px; display: flex; gap: 13px; padding: 7px 9px; background: #172522d9; color: #d7ded7; font-size: 7px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; }
-.map-legend span { display: flex; align-items: center; gap: 5px; }
-.map-legend i { display: block; width: 8px; height: 8px; }
-.legend-city { background: #b5e441; transform: rotate(45deg); }.legend-biome { background: #779148; border: 1px solid #a6bd74; }
-.coordinates { position: absolute; left: 15px; bottom: 12px; color: #9cb0aa; font: 9px monospace; }
+.news-section {
+  background: #121713;
+  color: #fff;
+  padding: 112px 9vw;
+}
+
+.news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.news-header h2 {
+  font-size: clamp(40px,5vw,70px);
+  margin-top: 14px;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 18px;
+}
+
+.news-feature,
+.news-card {
+  border: 1px solid #2d3a31;
+  background: linear-gradient(180deg, #1a241d 0%, #121912 100%);
+  box-shadow: 0 18px 40px rgba(0,0,0,.18);
+}
+
+.news-feature {
+  min-height: 320px;
+  padding: 28px 28px 20px;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(180,228,65,.22), transparent 40%),
+    linear-gradient(180deg, #1b251d 0%, #121912 100%);
+}
+
+.news-feature::before {
+  content: "";
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  width: 110px;
+  height: 110px;
+  background: linear-gradient(135deg, #b4e441 0 50%, #4d6e2b 50% 100%);
+  border: 6px solid #1f2d1d;
+  box-shadow: 12px 12px 0 rgba(0,0,0,.4);
+  transform: rotate(12deg);
+}
+
+.news-tag {
+  display: inline-flex;
+  padding: 7px 10px;
+  background: #b4e441;
+  color: #121712;
+  text-transform: uppercase;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.news-feature h3 {
+  margin: 18px 0 14px;
+  max-width: 420px;
+  font: 32px "Russo One";
+  line-height: 1.08;
+  text-transform: uppercase;
+}
+
+.news-feature p {
+  max-width: 500px;
+  color: #b7beb5;
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.news-meta {
+  position: absolute;
+  left: 28px;
+  bottom: 20px;
+  display: flex;
+  gap: 18px;
+  font-size: 11px;
+  color: #95a295;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.news-grid .news-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 22px 20px;
+}
+
+.news-icon {
+  width: 62px;
+  height: 62px;
+  position: relative;
+  border: 4px solid #1a2a20;
+  box-shadow: inset 0 0 0 3px rgba(255,255,255,.08);
+}
+
+.news-icon::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 2px solid rgba(0,0,0,.18);
+}
+
+.news-icon-green { background: #5dbc4b; }
+.news-icon-gold { background: #d8b455; }
+.news-icon-blue { background: #4d88d1; }
+
+.news-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #b7e348;
+  font-size: 9px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.news-card h4 {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+@media (max-width: 850px) {
+  .news-section { padding: 78px 24px; }
+  .news-header { display: block; }
+  .news-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .news-feature h3 { font-size: 24px; }
+  .news-card h4 { font-size: 15px; }
+}
 footer { min-height: 125px; padding: 0 5.5vw; display: flex; align-items: center; gap: 36px; border-top: 1px solid #252d26; color: #687067; }
 footer p { font-size: 10px; flex: 1; }
 .footer-links { display: flex; gap: 26px; }
@@ -186,7 +274,7 @@ footer p { font-size: 10px; flex: 1; }
   .section { padding: 78px 24px; }.section-heading { display: block; }.section-heading > p { width: auto; }
   .event-card { grid-template-columns: 42px 72px 48px 1fr 42px; }.event-tag { display: none; }.event-main h3 { font-size: 15px; }
   .passes-grid { grid-template-columns: 1fr; }.pass-card,.pass-card.featured { min-height: auto; max-width: 430px; width: 100%; margin: auto; }
-  .map-section { grid-template-columns: 1fr; }.world-map { height: 370px; width: calc(100% + 20px); }
+  .map-section { grid-template-columns: 1fr; }.minecraft-map { height: 370px; width: calc(100% + 20px); }
   footer { flex-wrap: wrap; padding: 35px 24px; gap: 18px; }.footer-links { order: 4; width: 100%; }
 }
 
