@@ -284,3 +284,21 @@ footer p { font-size: 10px; flex: 1; }
   .event-card { grid-template-columns: 32px 58px 44px 1fr; padding: 15px 0; }.event-card button { display: none; }.event-card time { font-size: 17px; }.event-item { transform: scale(.85); transform-origin: left center; }
   .section-heading h2,.center-heading h2,.map-copy h2 { font-size: 38px; }.map-stats { gap: 23px; }
 }
+
+.modal-open { overflow: hidden; }
+.server-modal[hidden] { display: none; }
+.server-modal { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 20px; }
+.server-modal-backdrop { position: absolute; inset: 0; background: #080b08cc; backdrop-filter: blur(5px); }
+.server-modal-card { position: relative; width: min(480px, 100%); padding: 32px; border: 1px solid #b4e44155; background: #151b16; box-shadow: 10px 10px 0 #55711e, 0 20px 70px #000a; }
+.server-modal-close { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; border: 0; background: transparent; color: #aeb5ac; font-size: 28px; line-height: 1; }
+.server-modal-kicker { color: #b4e441; text-transform: uppercase; font-size: 10px; font-weight: 800; letter-spacing: 2px; }
+.server-modal-card h2 { margin: 10px 0 22px; font-size: 42px; }
+.server-id-row { display: flex; gap: 10px; align-items: center; }
+.server-id-row strong { flex: 1; min-width: 0; padding: 14px; border: 1px solid #ffffff18; background: #090d0a; color: #dce5d8; font-size: clamp(12px, 4vw, 16px); }
+.server-copy { padding: 14px 16px; border: 0; background: #b4e441; color: #11150f; font-size: 12px; font-weight: 800; text-transform: uppercase; }
+
+@media (max-width: 480px) {
+  .server-modal-card { padding: 28px 20px 24px; }
+  .server-id-row { align-items: stretch; flex-direction: column; }
+  .server-copy { width: 100%; }
+}

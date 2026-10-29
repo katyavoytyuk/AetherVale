@@ -20,7 +20,7 @@
         <a href="#community">Спільнота</a>
       </nav>
 
-      <a class="header-cta" href="#passes">Увійти в світ</a>
+      <a class="header-cta server-join" href="#passes" aria-controls="server-modal">Увійти в світ</a>
     </header>
 
     <main>
@@ -45,7 +45,7 @@
           </p>
 
           <div class="hero-actions">
-            <a class="ip-button" href="#passes">
+            <a class="ip-button server-join" href="#passes" aria-controls="server-modal">
               <span class="ip-label">IP сервера</span>
               <strong>play.aethervale.net</strong>
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -234,6 +234,19 @@
       </div>
       <div class="copyright">© 2026</div>
     </footer>
+
+    <div class="server-modal" id="server-modal" role="dialog" aria-modal="true" aria-labelledby="server-modal-title" hidden>
+      <div class="server-modal-backdrop" data-close-modal></div>
+      <div class="server-modal-card">
+        <button class="server-modal-close" type="button" aria-label="Закрити" data-close-modal>×</button>
+        <span class="server-modal-kicker">Серверний IP</span>
+        <h2 id="server-modal-title">Aethervale</h2>
+        <div class="server-id-row">
+          <strong id="server-id">play.aethervale.net</strong>
+          <button class="server-copy" type="button">Скопіювати</button>
+        </div>
+      </div>
+    </div>
 
     <script src="./script.js"></script>
   </body>
