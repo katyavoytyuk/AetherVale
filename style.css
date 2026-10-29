@@ -32,6 +32,41 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
 .block-one { right: 39%; top: 19%; transform: rotate(8deg) scale(.75); }
 .block-two { right: 10%; top: 32%; transform: rotate(-7deg) scale(.45); }
 .block-three { right: 44%; bottom: 19%; transform: rotate(14deg) scale(.35); opacity: .7; }
+.minecraft-particles { position: absolute; inset: 82px 0 15px; z-index: 4; pointer-events: none; overflow: hidden; }
+.minecraft-particle.leaf-particle { position: absolute; left: var(--x); top: var(--y); width: var(--size); height: calc(var(--size) * .72); background: var(--color); opacity: 0; box-shadow: inset -3px -2px #0002, 2px 3px 5px #0002; clip-path: polygon(0 25%,38% 0,100% 18%,82% 72%,35% 100%,0 75%); animation: leaf-fall var(--speed) ease-in-out var(--delay) infinite; }
+.minecraft-particle.leaf-particle:nth-child(3n) { width: calc(var(--size) * 1.25); clip-path: polygon(50% 0,100% 40%,82% 100%,25% 78%,0 35%); }
+.minecraft-particle.leaf-particle:nth-child(5n) { filter: brightness(1.18); }
+@keyframes leaf-fall { 0% { transform: translate(0,-20px) rotate(var(--rotation)); opacity: 0; } 10% { opacity: var(--alpha); } 28% { transform: translate(var(--drift-a),18vh) rotate(calc(var(--rotation) + 120deg)); } 55% { transform: translate(var(--drift-b),38vh) rotate(calc(var(--rotation) + 210deg)); } 78% { opacity: var(--alpha); } 100% { transform: translate(var(--drift-c),78vh) rotate(calc(var(--rotation) + 360deg)); opacity: 0; } }
+.block-one,.block-two,.block-three { animation: floating-block 4.5s ease-in-out infinite alternate; }
+.block-two { animation-delay: -1.4s; }.block-three { animation-delay: -2.7s; }
+@keyframes floating-block { from { margin-top: -5px; } to { margin-top: 12px; } }
+.minecraft-house { position: absolute; z-index: 7; right: 11%; bottom: 18%; width: 260px; height: 210px; pointer-events: none; filter: drop-shadow(16px 22px 12px #0008); image-rendering: pixelated; }
+.house-wall { position: absolute; left: 22px; bottom: 18px; width: 216px; height: 132px; background: repeating-linear-gradient(90deg,#b08a51 0 18px,#9d7945 18px 36px); border-left: 7px solid #6e5433; border-right: 7px solid #6e5433; box-shadow: inset 0 7px #c7a263,10px 8px 0 #0003; }
+.house-wall:before { content: ""; position: absolute; left: 0; right: 0; bottom: 62px; height: 8px; background: #755936; box-shadow: 0 62px #80613a; }
+.house-chimney { position: absolute; z-index: 1; right: 52px; bottom: 168px; width: 30px; height: 48px; background: repeating-linear-gradient(90deg,#777264 0 15px,#5c5b50 15px 30px); border: 5px solid #48483f; }
+.house-roof { position: absolute; z-index: 4; left: 0; bottom: 150px; width: 260px; height: 72px; background: repeating-linear-gradient(90deg,#7f4b32 0 20px,#65402d 20px 40px,#94603f 40px 60px); clip-path: polygon(0 100%,11% 70%,11% 54%,22% 54%,22% 32%,34% 32%,34% 12%,66% 12%,66% 32%,78% 32%,78% 54%,89% 54%,89% 70%,100% 100%); box-shadow: inset 0 8px #ad7850; }
+.house-door { position: absolute; z-index: 3; left: 88px; bottom: 0; width: 52px; height: 78px; background: repeating-linear-gradient(90deg,#5c4128 0 25px,#493520 25px 50px); border: 7px solid #3f301f; border-bottom: 0; }
+.house-door i { position: absolute; right: 8px; top: 38px; width: 6px; height: 6px; background: #d1ae64; box-shadow: 0 0 6px #d1ae64; }
+.house-window { position: absolute; z-index: 5; bottom: 66px; width: 32px; height: 38px; background: #e4c78a; border: 6px solid #4d3925; box-shadow: 0 0 14px #f3d78a66,inset 0 0 0 4px #759aa0; }
+.house-window:before { content: ""; position: absolute; left: 10px; top: -2px; width: 5px; height: 30px; background: #5d4630; }
+.house-window:after { content: ""; position: absolute; left: -2px; top: 11px; width: 24px; height: 5px; background: #5d4630; }
+.window-left { left: 22px; }.window-right { right: 22px; }
+.house-balcony { position: absolute; z-index: 6; left: 30px; bottom: 52px; width: 200px; height: 28px; border: 6px solid #705536; border-top: 0; box-shadow: inset 0 -7px #8f703f; }
+.house-balcony i { position: absolute; left: 8px; right: 8px; bottom: 12px; height: 7px; background: repeating-linear-gradient(90deg,#705536 0 7px,transparent 7px 16px); }
+.house-vine { position: absolute; z-index: 6; bottom: -4px; width: 12px; height: 90px; background: repeating-linear-gradient(180deg,#557d32 0 12px,#6d963f 12px 20px); clip-path: polygon(50% 0,100% 12%,70% 25%,100% 38%,65% 55%,95% 72%,40% 100%,0 70%,28% 55%,0 38%,35% 20%); }
+.vine-left { left: -10px; }.vine-right { right: -10px; transform: scaleX(-1); }
+.house-fence { position: absolute; z-index: 4; left: -24px; right: -24px; bottom: 0; height: 35px; border-top: 7px solid #9a7849; }
+.house-fence span { position: absolute; bottom: 0; width: 9px; height: 40px; background: #80613a; border-top: 5px solid #b2915c; box-shadow: inset -3px 0 #59472e; }
+.house-fence span:nth-child(1) { left: 0; }.house-fence span:nth-child(2) { left: 64px; }.house-fence span:nth-child(3) { right: 64px; }.house-fence span:nth-child(4) { right: 0; }
+.house-lantern { position: absolute; z-index: 8; bottom: 84px; width: 14px; height: 18px; background: #e5ba67; border: 4px solid #4b3a27; box-shadow: 0 0 15px #f0c765aa; }
+.lantern-left { left: 58px; }.lantern-right { right: 58px; }
+.house-flowers { position: absolute; z-index: 8; bottom: 9px; width: 46px; height: 22px; }
+.house-flowers i { position: absolute; bottom: 0; width: 8px; height: 12px; background: #6f963f; box-shadow: 0 -7px #b7e441,0 -12px #e8d96b; }
+.house-flowers i:nth-child(1) { left: 4px; }.house-flowers i:nth-child(2) { left: 18px; height: 17px; box-shadow: 0 -7px #f18b9d,0 -12px #eee2aa; }.house-flowers i:nth-child(3) { left: 33px; }
+.flowers-left { left: 8px; }.flowers-right { right: 8px; }
+.world-block-stack { position: absolute; z-index: 3; right: 13%; bottom: 9%; width: 58px; height: 58px; transform: rotate(-7deg); }
+.world-block-stack i { position: absolute; width: 32px; height: 32px; border-top: 7px solid #9fc653; background: #668b38; box-shadow: inset -7px -7px #3b5329,7px 8px 12px #0007; }
+.world-block-stack i:nth-child(1) { left: 0; bottom: 0; }.world-block-stack i:nth-child(2) { left: 28px; bottom: 9px; transform: scale(.72); }.world-block-stack i:nth-child(3) { left: 13px; bottom: 35px; transform: scale(.55); }
 .terrain { position: absolute; right: -4%; bottom: -8%; width: 54vw; height: 51vh; background: linear-gradient(135deg,#668e32,#405e28 48%,#2a3922 49%); clip-path: polygon(9% 10%,39% 0,39% 12%,57% 12%,57% 3%,81% 12%,81% 28%,100% 28%,100% 100%,0 100%,0 29%,9% 29%); filter: drop-shadow(-24px 18px 0 #1a2518); }
 .terrain:before { content: ""; position: absolute; inset: 24% 0 0; background: repeating-linear-gradient(135deg,#293523 0 25px,#242f20 25px 50px); opacity: .92; }
 .terrain-two { right: 5%; bottom: 23%; transform: scale(.34); transform-origin: bottom right; opacity: .8; }
@@ -304,6 +339,11 @@ footer p { font-size: 10px; flex: 1; }
   .pass-modal-card { padding: 28px 20px 24px; }
   .pass-modal-card h2 { font-size: 32px; }
   .pass-order { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 850px), (prefers-reduced-motion: reduce) {
+  .minecraft-particles,.minecraft-house,.world-block-stack { display: none; }
+  .block-one,.block-two,.block-three { animation: none; }
 }
 
 .pass-modal[hidden] { display: none; }

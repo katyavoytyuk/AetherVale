@@ -119,3 +119,26 @@ passForm.addEventListener('submit', (event) => {
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && !passModal.hidden) closePassModal();
 });
+
+const minecraftParticles = document.querySelector('.minecraft-particles');
+
+if (minecraftParticles && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const colors = ['#6f963f', '#83ad49', '#9bbd55', '#567d32', '#b1c65b', '#718f4a'];
+
+  for (let i = 0; i < 38; i += 1) {
+    const particle = document.createElement('span');
+    particle.className = 'minecraft-particle leaf-particle';
+    particle.style.setProperty('--x', `${25 + Math.random() * 58}%`);
+    particle.style.setProperty('--y', `${7 + Math.random() * 18}%`);
+    particle.style.setProperty('--size', `${5 + Math.floor(Math.random() * 6)}px`);
+    particle.style.setProperty('--color', colors[i % colors.length]);
+    particle.style.setProperty('--speed', `${9 + Math.random() * 10}s`);
+    particle.style.setProperty('--delay', `${Math.random() * -18}s`);
+    particle.style.setProperty('--drift-a', `${-45 + Math.random() * 90}px`);
+    particle.style.setProperty('--drift-b', `${-70 + Math.random() * 140}px`);
+    particle.style.setProperty('--drift-c', `${-95 + Math.random() * 190}px`);
+    particle.style.setProperty('--rotation', `${Math.floor(Math.random() * 360)}deg`);
+    particle.style.setProperty('--alpha', `${0.55 + Math.random() * 0.35}`);
+    minecraftParticles.appendChild(particle);
+  }
+}
