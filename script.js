@@ -46,3 +46,35 @@ copyButton.addEventListener('click', async () => {
     copyButton.textContent = 'Скопіювати';
   }, 1500);
 });
+
+const eventModal = document.getElementById('event-modal');
+const eventModalTitle = document.getElementById('event-modal-title');
+const eventModalTime = document.getElementById('event-modal-time');
+
+const closeEventModal = () => {
+  eventModal.hidden = true;
+  document.body.classList.remove('modal-open');
+};
+
+document.querySelectorAll('.event-open').forEach((button) => {
+  button.addEventListener('click', () => {
+    eventModalTitle.textContent = button.dataset.event;
+    eventModalTime.textContent = button.dataset.time;
+    eventModal.hidden = false;
+    document.body.classList.add('modal-open');
+    eventModal.querySelector('.event-modal-close').focus();
+  });
+});
+
+eventModal.querySelectorAll('[data-close-event]').forEach((element) => {
+  element.addEventListener('click', closeEventModal);
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && !eventModal.hidden) closeEventModal();
+});
+
+
+
+
+const eventBtn1 = document.getElementsByName('aria-label')[0];
