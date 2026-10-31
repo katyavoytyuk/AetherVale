@@ -290,9 +290,54 @@
             </label>
           </fieldset>
 
+          <div class="card-fields" id="card-fields">
+            <label class="card-number-label">
+              Номер картки
+              <input id="card-number" name="card-number" type="text" inputmode="numeric" autocomplete="cc-number" maxlength="19" placeholder="0000 0000 0000 0000" pattern="[0-9 ]{15,19}" required />
+            </label>
+            <div class="card-fields-row">
+              <label>
+                Термін дії
+                <input id="card-expiry" name="card-expiry" type="text" inputmode="numeric" autocomplete="cc-exp" maxlength="5" placeholder="MM/YY" pattern="(0[1-9]|1[0-2])/[0-9]{2}" required />
+              </label>
+              <label>
+                CVV
+                <input id="card-cvv" name="card-cvv" type="password" inputmode="numeric" autocomplete="cc-csc" minlength="3" maxlength="4" pattern="[0-9]{3,4}" placeholder="123" required />
+              </label>
+            </div>
+            <label>
+              Ім’я власника
+              <input id="card-holder" name="card-holder" type="text" autocomplete="cc-name" minlength="3" maxlength="50" placeholder="OLEG PETRENKO" pattern="[A-Za-zА-Яа-яІіЇїЄєҐґ' -]+" required />
+            </label>
+          </div>
+
           <button class="pass-submit" type="submit">Перейти до оплати</button>
           <p class="pass-form-status" id="pass-form-status" role="status"></p>
         </form>
+      </div>
+    </div>
+
+    <div class="confirm-modal" id="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirm-modal-title" hidden>
+      <div class="confirm-modal-backdrop"></div>
+      <div class="confirm-modal-card">
+        <span class="confirm-modal-kicker">Підтвердження оплати</span>
+        <h2 id="confirm-modal-title">Ви впевнені?</h2>
+        <p>Переходимо до оформлення придбання привілею.</p>
+        <div class="confirm-modal-actions">
+          <button class="confirm-modal-no" id="confirm-no" type="button">Ні</button>
+          <button class="confirm-modal-yes" id="confirm-yes" type="button">Так</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="success-modal" id="success-modal" role="dialog" aria-modal="true" aria-labelledby="success-modal-title" hidden>
+      <div class="success-modal-backdrop"></div>
+      <div class="success-modal-card">
+        <span class="success-modal-icon">✓</span>
+        <span class="success-modal-kicker">Оплата успішна</span>
+        <h2 id="success-modal-title">Донат придбано!</h2>
+        <p id="success-modal-text"></p>
+        <button class="success-modal-button" id="success-close" type="button">Готово</button>
       </div>
     </div>
 

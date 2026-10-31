@@ -81,12 +81,33 @@ const passSelectedPrice = document.getElementById('pass-selected-price');
 const passForm = document.getElementById('pass-form');
 const passFormStatus = document.getElementById('pass-form-status');
 const nicknameInput = document.getElementById('minecraft-nickname');
+const cardFields = document.getElementById('card-fields');
+const cardNumberInput = document.getElementById('card-number');
+const cardExpiryInput = document.getElementById('card-expiry');
+const cardCvvInput = document.getElementById('card-cvv');
+const cardHolderInput = document.getElementById('card-holder');
+const confirmModal = document.getElementById('confirm-modal');
+const confirmYes = document.getElementById('confirm-yes');
+const confirmNo = document.getElementById('confirm-no');
+const successModal = document.getElementById('success-modal');
+const successModalText = document.getElementById('success-modal-text');
+const successClose = document.getElementById('success-close');
+
+const updatePaymentFields = () => {
+  const payment = new FormData(passForm).get('payment');
+  const isCard = payment === 'Картка';
+  cardFields.hidden = !isCard;
+  cardFields.querySelectorAll('input').forEach((input) => {
+    input.disabled = !isCard;
+  });
+};
 
 const closePassModal = () => {
   passModal.hidden = true;
   document.body.classList.remove('modal-open');
   passFormStatus.textContent = '';
   passForm.reset();
+  updatePaymentFields();
 };
 
 document.querySelectorAll('.pass-buy').forEach((button) => {
@@ -104,6 +125,30 @@ passModal.querySelectorAll('[data-close-pass]').forEach((element) => {
   element.addEventListener('click', closePassModal);
 });
 
+passForm.querySelectorAll('input[name="payment"]').forEach((input) => {
+  input.addEventListener('change', updatePaymentFields);
+});
+
+cardNumberInput.addEventListener('input', () => {
+  const digits = cardNumberInput.value.replace(/\D/g, '').slice(0, 16);
+  cardNumberInput.value = digits.replace(/(.{4})/g, '$1 ').trim();
+});
+
+cardExpiryInput.addEventListener('input', () => {
+  const digits = cardExpiryInput.value.replace(/\D/g, '').slice(0, 4);
+  cardExpiryInput.value = digits.length > 2 ? `${digits.slice(0, 2)}/${digits.slice(2)}` : digits;
+});
+
+cardCvvInput.addEventListener('input', () => {
+  cardCvvInput.value = cardCvvInput.value.replace(/\D/g, '').slice(0, 4);
+});
+
+cardHolderInput.addEventListener('input', () => {
+  cardHolderInput.value = cardHolderInput.value.toUpperCase();
+});
+
+updatePaymentFields();
+
 passForm.addEventListener('submit', (event) => {
   event.preventDefault();
 
@@ -113,11 +158,42 @@ passForm.addEventListener('submit', (event) => {
   }
 
   const payment = new FormData(passForm).get('payment');
-  passFormStatus.textContent = `Замовлення готове до оплати: ${passSelectedName.textContent}, ${passSelectedPrice.textContent}, нік ${nicknameInput.value}, оплата: ${payment}.`;
+  if (payment === 'Картка') {
+    for (const input of cardFields.querySelectorAll('input')) {
+      if (!input.checkValidity()) {
+        input.reportValidity();
+        return;
+      }
+    }
+  }
+
+  passFormStatus.textContent = '';
+  confirmModal.hidden = false;
+});
+
+confirmNo.addEventListener('click', () => {
+  confirmModal.hidden = true;
+});
+
+confirmYes.addEventListener('click', () => {
+  confirmModal.hidden = true;
+  passModal.hidden = true;
+  successModalText.textContent = `${passSelectedName.textContent} · ${passSelectedPrice.textContent} · Нік: ${nicknameInput.value}`;
+  successModal.hidden = false;
+  successClose.focus();
+});
+
+successClose.addEventListener('click', () => {
+  successModal.hidden = true;
+  closePassModal();
 });
 
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && !passModal.hidden) closePassModal();
+  if (event.key === 'Escape' && !confirmModal.hidden) confirmModal.hidden = true;
+  else if (event.key === 'Escape' && !successModal.hidden) {
+    successModal.hidden = true;
+    closePassModal();
+  } else if (event.key === 'Escape' && !passModal.hidden) closePassModal();
 });
 
 const minecraftParticles = document.querySelector('.minecraft-particles');

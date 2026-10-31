@@ -339,6 +339,7 @@ footer p { font-size: 10px; flex: 1; }
   .pass-modal-card { padding: 28px 20px 24px; }
   .pass-modal-card h2 { font-size: 32px; }
   .pass-order { grid-template-columns: 1fr; }
+  .card-fields-row { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 850px), (prefers-reduced-motion: reduce) {
@@ -358,13 +359,35 @@ footer p { font-size: 10px; flex: 1; }
 .pass-order strong { color: #b4e441; }
 .pass-form > label { display: block; margin-bottom: 18px; color: #c8cec5; font-size: 12px; font-weight: 700; }
 .pass-form input[type="text"] { width: 100%; margin-top: 8px; padding: 13px 14px; border: 1px solid #4a554b; outline: none; background: #090d0a; color: #fff; }
-.pass-form input[type="text"]:focus { border-color: #b4e441; }
+.pass-form input[type="text"]:focus,
+.pass-form input[type="password"]:focus { border-color: #b4e441; }
 .pass-form fieldset { margin: 0 0 18px; padding: 0; border: 0; }
 .pass-form legend { margin-bottom: 8px; color: #c8cec5; font-size: 12px; font-weight: 700; }
 .payment-option { display: flex; align-items: center; gap: 9px; margin-top: 8px; padding: 11px; border: 1px solid #303a31; color: #b7beb5; font-size: 12px; }
 .payment-option:has(input:checked) { border-color: #b4e441; background: #b4e4410d; }
+.card-fields { margin-bottom: 18px; padding: 14px; border: 1px solid #303a31; background: #090d0a; }
+.card-fields[hidden] { display: none; }
+.card-fields label { display: block; margin-bottom: 12px; color: #c8cec5; font-size: 12px; font-weight: 700; }
+.card-fields label:last-child { margin-bottom: 0; }
+.card-fields input[type="text"],
+.card-fields input[type="password"] { width: 100%; margin-top: 8px; padding: 13px 14px; border: 1px solid #4a554b; outline: none; background: #151b16; color: #fff; }
+.card-fields-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .pass-submit { width: 100%; padding: 14px; border: 0; background: #b4e441; color: #11150f; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
 .pass-form-status { min-height: 18px; margin: 12px 0 0; color: #b4e441; font-size: 11px; text-align: center; }
+
+.confirm-modal[hidden], .success-modal[hidden] { display: none; }
+.confirm-modal, .success-modal { position: fixed; inset: 0; z-index: 110; display: grid; place-items: center; padding: 20px; }
+.confirm-modal-backdrop, .success-modal-backdrop { position: absolute; inset: 0; background: #080b08cc; backdrop-filter: blur(5px); }
+.confirm-modal-card, .success-modal-card { position: relative; width: min(420px, 100%); padding: 32px; border: 1px solid #b4e44155; background: #151b16; box-shadow: 10px 10px 0 #55711e, 0 20px 70px #000a; text-align: center; }
+.confirm-modal-kicker, .success-modal-kicker { color: #b4e441; text-transform: uppercase; font-size: 10px; font-weight: 800; letter-spacing: 2px; }
+.confirm-modal-card h2, .success-modal-card h2 { margin: 12px 0 10px; color: #fff; font-size: 34px; }
+.confirm-modal-card p, .success-modal-card p { margin: 0 0 22px; color: #b7beb5; font-size: 13px; }
+.confirm-modal-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.confirm-modal-no, .confirm-modal-yes, .success-modal-button { padding: 14px; border: 0; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+.confirm-modal-no { border: 1px solid #4a554b; background: transparent; color: #c8cec5; }
+.confirm-modal-yes, .success-modal-button { background: #b4e441; color: #11150f; }
+.success-modal-icon { display: grid; place-items: center; width: 58px; height: 58px; margin: 0 auto 14px; border-radius: 50%; background: #b4e441; color: #11150f; font-size: 32px; font-weight: 900; }
+.success-modal-button { width: 100%; }
 
 .event-modal[hidden] { display: none; }
 .event-modal { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 20px; }
